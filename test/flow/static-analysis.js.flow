@@ -1,0 +1,50 @@
+// @flow
+'use strict';
+
+import DependencyTreeNode from '../../lib/static-analysis/dependency-scanner/dependency-tree-node.js';
+const dtn: DependencyTreeNode = new DependencyTreeNode({}, '/x/y/z');
+
+
+// root
+
+import { analyze } from '../../lib/static-analysis/index.js';
+
+
+analyze(false, 'hello').then((node: DependencyTreeNode) => {});
+analyze(true);
+analyze();
+// $ExpectError
+analyze(1, 'hello');
+// $ExpectError
+analyze(true, 2);
+
+
+
+// loc-analyzer
+
+import { annotateTreeWithLoc } from '../../lib/static-analysis/loc-analyzer/index.js';
+annotateTreeWithLoc(dtn, () => {}).then((result: DependencyTreeNode) => {});
+// $ExpectError
+annotateTreeWithLoc(dtn).then((result: Array<mixed>) => {});
+// $ExpectError
+annotateTreeWithLoc(null, () => {}).then((result: Array<mixed>) => {});
+
+import { runLoc } from '../../lib/static-analysis/loc-analyzer/cloc-wrapper.js';
+runLoc({dir: '/x/yz/', excludedDirs: ['/x/y/q']}).then((result: {}) => {});
+runLoc({dir: '/x/y/z'});
+// $ExpectError
+runLoc();
+// $ExpectError
+runLoc({});
+// $ExpectError
+runLoc({dir: '/x/y/z', excludedDirs: [true]});
+
+
+
+// dependency-scanner
+
+import DependencyScanner from '../../lib/static-analysis/dependency-scanner/index.js';
+const ds = new DependencyScanner('a/b/c');
+ds.scanDependencies().then((_dtn: DependencyTreeNode) => {});
+// $ExpectError
+ds.scanDependencies('hey').then((_dtn: DependencyTreeNode) => {});

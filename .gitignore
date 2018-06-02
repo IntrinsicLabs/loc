@@ -1,0 +1,4 @@
+node_modules/
+.DS_Store
+!/fixtures/fake-test-app/node_modules/
+!/fixtures/fake-test-app/node_modules/@scoped/testModule/node_modules

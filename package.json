@@ -1,0 +1,33 @@
+{
+  "name": "@intrinsic/loc",
+  "version": "0.0.0",
+  "description": "Compare the amount code in your application vs. in its `node_modules` folder",
+  "repository": "https://github.com/IntrinsicLabs/loc",
+  "directories": {
+    "lib": "./lib",
+    "bin": "./bin"
+  },
+  "dependencies": {
+    "cloc": "2.3.2"
+  },
+  "bin": {
+    "intrinsic-loc": "./bin/loc"
+  },
+  "scripts": {
+    "preinstall": "node ./scripts/preinstall.js",
+    "prepublishOnly": "npm run test",
+    "test": "node ./test/report.js && node ./test/dependency-scanner.js && node ./test/helpers.js && node ./test/helpers-tty.js && node ./test/loc-output.js && npm run lint && npm run tc",
+    "lint": "eslint --ignore-path .gitignore .",
+    "tc": "flow"
+  },
+  "author": {
+    "name": "Intrinsic",
+    "email": "hello@intrinsic.com",
+    "url": "https://intrinsic.com"
+  },
+  "license": "GPL-3.0-only",
+  "devDependencies": {
+    "eslint": "4.19.1",
+    "flow-bin": "0.72.0"
+  }
+}
