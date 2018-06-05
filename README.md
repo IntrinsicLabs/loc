@@ -21,8 +21,10 @@ _)      |       _)         _)
  | |  | |   |    | |  |\__\ | (
 _|_| _|\__|_|   _|_| _|___/_|\___|
 
-Your application code:     835 ( 0.52%)
-`node_modules` code:   159,149 (99.48%)
+Your application code:     835 lines ( 0.52%)
+`node_modules` code:   159,149 lines (99.48%)
 
 Want to learn more? https://intrinsic.com/
 ```
+
+**Need help or have a question? Contact <hello@intrinsic.com>**
