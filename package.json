@@ -1,6 +1,6 @@
 {
   "name": "@intrinsic/loc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compare the amount code in your application vs. in its `node_modules` folder",
   "repository": "https://github.com/IntrinsicLabs/loc",
   "directories": {
